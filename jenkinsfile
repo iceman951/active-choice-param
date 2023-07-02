@@ -23,7 +23,9 @@ properties([
                         <p>Click the button to create a Text Field.</p>
                         <button onclick="myFunction()">Try it</button>
 
-                        <input type="text" id = "result" name="value" value="''' + tst + '''">
+                        <p>test</p>
+
+                        // <input type="text" id = "result" name="value" value="''' + tst + '''">
                         <script>
                         function myFunction() {
                           var x = document.createElement("INPUT");
