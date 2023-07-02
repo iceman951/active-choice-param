@@ -26,7 +26,7 @@ properties([
 
                         <script>
                         function myFunction() {
-                          var x = document.createElement("INPUT");
+                          var x = document.createElement("BUTTON");
                           x.setAttribute("type", "text");
                           x.setAttribute("value", "Hello World!");
                           document.body.appendChild(x);
