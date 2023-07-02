@@ -1,10 +1,8 @@
 properties([
     parameters([
         [$class: 'ChoiceParameter',
-            choiceType: 'PT_SINGLE_SELECT',
+            choiceType: 'ET_FORMATTED_HTML',
             description: 'Select a choice',
-            filterLength: 1,
-            filterable: true,
             name: 'PARAM_ONE',
             referencedParameters: 'ENVIRONMENT',
             script: [$class: 'GroovyScript',
