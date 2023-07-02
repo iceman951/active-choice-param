@@ -19,6 +19,12 @@ properties([
                         def html = '''
                         <html>
                         <body>
+
+                        <p>Click the button to create a Text Field.</p>
+                        <button onclick="myFunction()">Try it</button>
+
+                        <input type="text" id = "result" name="value" value="''' + tst + '''">
+                        <script>
                         function myFunction() {
                           var x = document.createElement("INPUT");
                           x.setAttribute("type", "text");
@@ -26,10 +32,6 @@ properties([
                           document.body.appendChild(x);
                         }
                         </script>
-                        <p>Click the button to create a Text Field.</p>
-                        <button onclick="myFunction()">Try it</button>
-
-                        <input type="text" id = "result" name="value" value="''' + tst + '''">
                         </body>
                         </html>
                         '''
