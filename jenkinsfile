@@ -2,7 +2,7 @@ properties([
     parameters([
         [$class: 'ChoiceParameter',
             choiceType: 'ET_FORMATTED_HTML',
-            description: 'Select a choice',
+            description: 'describe',
             name: 'PARAM_ONE',
             referencedParameters: 'ENVIRONMENT',
             script: [$class: 'GroovyScript',
