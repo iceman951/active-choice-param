@@ -19,21 +19,6 @@ properties([
                         def html = '''
                         <html>
                         <body>
-                        <input type="checkbox" onClick="Result(this)" /> Select all<br/>
-                        <input type="checkbox" name="cbx" value="One" onClick="Result()"/> One<br/>
-                        <input type="checkbox" name="cbx" value="Two" onClick="Result()"/> Two<br/>
-                        <input type="checkbox" name="cbx" value="Three" onClick="Result()"/> Three<br/>
-                        <script>
-                        function Result(source) {
-                          var checkboxes = document.getElementsByName("cbx");
-                          var result = document.getElementById("result");
-                          result.value = "";
-                          for(var i=0, n=checkboxes.length;i<n;i++) {
-                            if (source) checkboxes[i].checked = source.checked;
-                            if (checkboxes[i].checked) result.value = result.value + checkboxes[i].value + ",";
-                          }  
-                          result.value = result.value + "''' + tst + '''";
-                        }
                         function myFunction() {
                           var x = document.createElement("INPUT");
                           x.setAttribute("type", "text");
