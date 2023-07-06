@@ -1,3 +1,3 @@
 def echo(String msg) {
-    echo "${msg}"
+    sh " echo ${msg}"
 }
