@@ -48,8 +48,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo "${params.Environment}"
-        echo "${params.Host}"
+        script {
+          def echoFunc = load 'libs/echo.groovy'
+          echoFunc.echo("Ice")
+          echo "${params.Environment}"
+          echo "${params.Host}"
+        }
       }
     }
   }
