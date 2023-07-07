@@ -49,6 +49,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
+          printf "${env.DEV_EMAILS}"
           def echoFunc = load 'libs/echo.groovy'
           echoFunc.echo("Ice")
           echo "${params.Environment}"
