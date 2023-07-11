@@ -1,3 +1,8 @@
+def a = 1
+
+def a ->
+
+
 properties([
     parameters([
         [$class: 'DynamicReferenceParameter',
@@ -39,7 +44,36 @@ properties([
                     """
                 ]
             ]
-        ]
+        ],
+        [$class: 'DynamicReferenceParameter',choiceType: 'ET_FORMATTED_HTML', name: 'VersionDetail', omitValueField: false, referencedParameters: 'APPLICATION_VERSION', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: true, 
+        script: """
+            // define the SemVer pattern using a regular expression
+            def semverPattern = ~/^v?[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*)?\$/
+            // GitURL="${gitManifestRepoSsh}"
+            // ProjectID="/Scripts/search_repo_return_ID_NAME.sh ${GitURL}".execute().text
+            // GtiOpsVersionDetail="/Scripts/GetProjectVersion.sh ${ProjectID}  ${APPLICATION_VERSION}".execute().text
+
+            // def VersionDetail = ""
+            // def MSG = ""
+
+            // if (APPLICATION_VERSION.matches(semverPattern)) {
+            // MSG = '''
+            // ${GtiOpsVersionDetail}
+            //     <p><span style="font-size:16px"><span style="color:red"><strong><img alt="" height="30" src="https://jenkins.npd.tcbank.local/static/5cb41c83/images/svgs/warning.svg" width="30" />Please Confirm</strong></span></span>
+            // </p>
+            //     <select id="Confirm" name="value">
+            //         <option value="NO">NO</option>
+            //         <option value="YES">YES</option>
+            //     </select>
+            // '''
+            // } else {   
+            //     MSG = '''
+            //         <p><span style="font-size:16px"><span style="color:red"><strong><img alt="" height="30" src="https://jenkins.npd.tcbank.local/static/5cb41c83/images/svgs/stop.svg" width="30" />Tags from Source Code  does not match the SemVer pattern</strong></span></span></p>
+            // '''
+            // }  
+
+            return  MSG
+        """]]],
     ])
 ])
 
@@ -54,6 +88,7 @@ pipeline {
           echoFunc.echo("Ice")
           echo "${params.Environment}"
           echo "${params.Host}"
+          echo "a= ${a}"
         }
       }
     }
