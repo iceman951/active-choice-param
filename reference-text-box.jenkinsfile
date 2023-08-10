@@ -1,0 +1,52 @@
+def manifest_filter_repo = 'manifest'
+properties([
+    parameters([
+        // [$class: 'DynamicReferenceParameter', name: 'ENVIRONMENT', defaultValue: "${pipelineEnv}", choiceType: 'ET_FORMATTED_HTML', omitValueField: false, script: [$class: 'GroovyScript', script: [classpath: [], oldScript: '', sandbox: true, script: """ return "<h1> ${pipelineEnv.toUpperCase()}</h1>" """]]],
+        // [$class: 'DynamicReferenceParameter', name: 'GitURL', choiceType: 'ET_FORMATTED_HTML', omitValueField: false, script: [$class: 'GroovyScript', script: [classpath: [], oldScript: '', sandbox: false, script: """ return "${gitManifestRepoSsh}" """]]],
+        string(name: 'ManifestFilter', defaultValue: "${manifest_filter_repo}", description: 'สวัสดี'),
+        // [$class: 'DynamicReferenceParameter', name: 'ManifestFilter', choiceType: 'ET_FORMATTED_HTML', omitValueField: false, script: [$class: 'GroovyScript', script: [classpath: [], oldScript: '', sandbox: true, script: """ return "<input name='value' value='manifest' class='setting-input' type='text';'>" """]]],
+        [$class: 'CascadeChoiceParameter', name: 'ManifestRepo', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: true,
+            referencedParameters: 'ManifestFilter',
+            script: [$class: 'GroovyScript',
+                fallbackScript: [
+                    classpath: [],
+                    sandbox: false,
+                    script: 'return ["ERROR", "CHECK APPROVED SCRIPT"]'
+                ],
+                script: [
+                    classpath: [],
+                    sandbox: true,
+                    script: """
+                        tags = ['1','2','3']
+                        def text = ManifestFilter
+                        tags.push(text)
+                        return tags
+                    """
+                ]
+            ]
+        ],
+        // [$class: 'CascadeChoiceParameter', name: 'EnableServiceMesh', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, referencedParameters: '', description: 'choose method to deploy route', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], oldScript: '', sandbox: false, script: ''], script: [classpath: [], oldScript: '', sandbox: true, script: "return['No (OCP)', 'Yes (ServiceMesh)']"]]],
+
+    ])
+])
+
+
+pipeline {
+    agent any
+    stages {
+        stage('test1') {
+            steps {
+                script {
+                    echo "${params.ManifestFilter}"
+                }
+            }
+        }
+        stage('test2') {
+            steps {
+                script {
+                    echo "test2"
+                }
+            }
+        }
+    }
+}
