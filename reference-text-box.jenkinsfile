@@ -3,7 +3,7 @@ properties([
     parameters([
         // [$class: 'DynamicReferenceParameter', name: 'ENVIRONMENT', defaultValue: "${pipelineEnv}", choiceType: 'ET_FORMATTED_HTML', omitValueField: false, script: [$class: 'GroovyScript', script: [classpath: [], oldScript: '', sandbox: true, script: """ return "<h1> ${pipelineEnv.toUpperCase()}</h1>" """]]],
         // [$class: 'DynamicReferenceParameter', name: 'GitURL', choiceType: 'ET_FORMATTED_HTML', omitValueField: false, script: [$class: 'GroovyScript', script: [classpath: [], oldScript: '', sandbox: false, script: """ return "${gitManifestRepoSsh}" """]]],
-        string(name: 'ManifestFilter', defaultValue: "${manifest_filter_repo}", description: 'สวัสดี'),
+        string(name: 'ManifestFilter', defaultValue: "${manifest_filter_repo}", description: ''),
         // [$class: 'DynamicReferenceParameter', name: 'ManifestFilter', choiceType: 'ET_FORMATTED_HTML', omitValueField: false, script: [$class: 'GroovyScript', script: [classpath: [], oldScript: '', sandbox: true, script: """ return "<input name='value' value='manifest' class='setting-input' type='text';'>" """]]],
         [$class: 'CascadeChoiceParameter', name: 'ManifestRepo', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: true,
             referencedParameters: 'ManifestFilter',
